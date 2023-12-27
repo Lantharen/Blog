@@ -23,6 +23,9 @@ class CreateButton extends Link
     }
 
     /**
+     * Generates the 'create' route name based on the current route.
+     * Replaces '.index' with '.create' in the current route name.
+     *
      * @return string
      */
     protected static function guessRouteName(): string

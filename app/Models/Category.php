@@ -22,6 +22,11 @@ class Category extends Model
     ];
 
 
+    /**
+     * Relationship to Article model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);

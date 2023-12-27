@@ -16,6 +16,11 @@ class SaveCategoryRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Defines validation rules for category data.
+     *
+     * @return iterable
+     */
     public function rules(): iterable
     {
         return [

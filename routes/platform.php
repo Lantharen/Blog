@@ -105,40 +105,46 @@ Route::screen('/examples/grid', ExampleGridScreen::class)->name('platform.exampl
 Route::screen('/examples/charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
+// Platform > System > Category
 Route::screen('categories', CategoryListScreen::class)
     ->name('platform.system.categories')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Category'));
 
+// Platform > System > Categories > Category
 Route::screen('categories/{category}/edit', CategoryEditScreen::class)
     ->name('platform.system.categories.edit')
     ->breadcrumbs(fn (Trail $trail, $category) => $trail
         ->parent('platform.system.categories')
         ->push($category->name, route('platform.system.categories.edit', $category)));
 
+// Platform > System > Category > Create
 Route::screen('categories/create', CategoryEditScreen::class)
     ->name('platform.system.categories.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.system.categories')
         ->push(__('Create'), route('platform.system.categories.create')));
 
+// Platform > System > Article
 Route::screen('articles', ArticleListScreen::class)
     ->name('platform.system.articles')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Articles'));
 
-Route::screen('articles/{article}/edit', ArticleEditScreen::class)
-    ->name('platform.system.articles.edit')
-    ->breadcrumbs(fn (Trail $trail, $article) => $trail
-        ->parent('platform.system.articles')
-        ->push($article->id, route('platform.system.articles.edit', $article)));
-
+// Platform > System > Article > Create
 Route::screen('articles/create', ArticleEditScreen::class)
     ->name('platform.system.articles.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.system.articles')
         ->push(__('Create'), route('platform.system.articles.create')));
+
+// Platform > System > Articles > Article
+Route::screen('articles/{article}/edit', ArticleEditScreen::class)
+    ->name('platform.system.articles.edit')
+    ->breadcrumbs(fn (Trail $trail, $article) => $trail
+        ->parent('platform.system.articles')
+        ->push($article->id, route('platform.system.articles.edit', $article)));
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');

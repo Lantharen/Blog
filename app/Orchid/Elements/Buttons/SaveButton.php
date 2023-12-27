@@ -7,6 +7,8 @@ use Orchid\Screen\Actions\Button;
 class SaveButton extends Button
 {
     /**
+     * Create a new button instance.
+     *
      * @param  string|null  $name
      * @return \App\Orchid\Elements\Buttons\SaveButton|\Orchid\Screen\Actions\Button
      */

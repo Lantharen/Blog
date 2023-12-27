@@ -9,6 +9,8 @@ use Orchid\Support\Facades\Toast;
 abstract class AbstractCategoryScreen extends Screen
 {
     /**
+     * Delete the Category
+     *
      * @param  \App\Models\Category  $category
      * @return void
      */

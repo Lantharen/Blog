@@ -75,6 +75,8 @@ class CategoryEditScreen extends AbstractCategoryScreen
     }
 
     /**
+     * Saves the category after creating or updating.
+     *
      * @param  \App\Models\Category  $category
      * @param  \App\Http\Requests\Category\SaveCategoryRequest  $request
      * @return \Illuminate\Http\RedirectResponse

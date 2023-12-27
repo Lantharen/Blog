@@ -7,6 +7,11 @@ use Orchid\Screen\Layouts\Rows;
 
 class CategoryEditLayout extends Rows
 {
+    /**
+     * Defines the layout fields for category editing.
+     *
+     * @return iterable
+     */
     protected function fields(): iterable
     {
         return [

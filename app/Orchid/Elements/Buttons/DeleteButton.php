@@ -7,6 +7,8 @@ use Orchid\Screen\Actions\Button;
 class DeleteButton extends Button
 {
     /**
+     * Create a new button instance.
+     *
      * @param  string|null  $name
      * @return \App\Orchid\Elements\Buttons\DeleteButton|\Orchid\Screen\Actions\Button
      */

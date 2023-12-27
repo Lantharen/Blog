@@ -10,6 +10,8 @@ abstract class AbstractArticleScreen extends Screen
 {
 
     /**
+     * Deletes the article.
+     *
      * @param  \App\Models\Article $article
      * @return void
      */
