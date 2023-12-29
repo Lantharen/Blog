@@ -17,8 +17,7 @@ class CategoryEditLayout extends Rows
         return [
             Input::make('categories.name')
             ->title('Name')
-            ->minlength(1)
-            ->maxlength(5)
+            ->maxlength(20)
         ];
     }
 }

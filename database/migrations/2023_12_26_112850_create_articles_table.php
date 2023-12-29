@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->boolean('is_published')->default(false);
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

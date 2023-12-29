@@ -6,6 +6,7 @@ use App\Models\Category;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Rows;
 
@@ -25,7 +26,7 @@ class ArticleEditLayout extends Rows
                 ->fromModel(Category::class, 'name'),
 
             CheckBox::make('articles.is_published')
-                ->title('Value')
+                ->title('Published or Not')
                 ->sendTrueOrFalse()
                 ->help('Check if the article is published'),
 
@@ -34,10 +35,10 @@ class ArticleEditLayout extends Rows
                 ->minlength(10)
                 ->maxlength(50),
 
-            Input::make('articles.content')
+            TextArea::make('articles.content')
+                ->rows(5)
                 ->title('Content')
-                ->minlength(10)
-                ->maxlength(50),
+                ->maxlength(500),
 
             Upload::make('articles.attachment')
                 ->title('Upload Images')

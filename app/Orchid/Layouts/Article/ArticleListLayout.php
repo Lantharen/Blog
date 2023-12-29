@@ -32,7 +32,10 @@ class ArticleListLayout extends Table
                 ->alignCenter()
                 ->cantHide(),
 
-            TD::make('is_published', 'Value')
+            TD::make('is_published', 'Published')
+                ->render(function (Article $article) {
+                    return $article->is_published ? 'Опубликована' : '';
+                })
                 ->alignCenter()
                 ->cantHide(),
 

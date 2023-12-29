@@ -26,13 +26,12 @@ class CategoryListLayout extends Table
         return [
             TD::make('id', 'ID')
                 ->width('50')
-                ->align('center')
+                ->alignCenter()
                 ->cantHide(),
 
             TD::make('name', 'Name')
                 ->width('50')
-                ->align('center')
-                ->sort()
+                ->alignCenter()
                 ->cantHide(),
 
             TD::make('created_at', 'Created')
@@ -40,8 +39,7 @@ class CategoryListLayout extends Table
                     return $category->created_at->toDayDateTimeString();
                 })
                 ->width('50')
-                ->align('center')
-                ->sort()
+                ->alignCenter()
                 ->cantHide(),
 
             TD::make('updated_at', 'Updated')
@@ -49,8 +47,7 @@ class CategoryListLayout extends Table
                     return $category->updated_at->toDayDateTimeString();
                 })
                 ->width('50')
-                ->align('center')
-                ->sort()
+                ->alignCenter()
                 ->cantHide(),
 
             TD::make(__('Actions'))

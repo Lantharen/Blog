@@ -80,11 +80,12 @@ class ArticleEditScreen extends AbstractArticleScreen
     {
         $article->fill($request->input('articles'))->save();
 
-        if ($request->file('articles.attachment')) {
-            foreach ($request->file('articles.attachment') as $file) {
-                $article->attachment()->attach($file);
-            }
+        if ($article->attachment()->syncWithoutDetaching(
+            $request->input('articles.attachment', [])
+        )) {
+            Toast::info('Article successfully saved.');
         }
+
 
         Toast::info('Article successfully created.');
 

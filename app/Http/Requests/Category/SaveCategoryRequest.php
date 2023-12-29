@@ -24,7 +24,7 @@ class SaveCategoryRequest extends FormRequest
     public function rules(): iterable
     {
         return [
-            'categories.name' => ['required', 'string', 'between:1,5'],
+            'categories.name' => ['required', 'string', 'max:20'],
         ];
     }
 }

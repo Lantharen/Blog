@@ -25,7 +25,7 @@ class SaveArticleRequest extends FormRequest
     {
         return [
             'articles.title' => ['required', 'string', 'between:10,50'],
-            'articles.content' => ['required', 'string', 'between:10,50'],
+            'articles.content' => ['required', 'string', 'max:500'],
             'articles.is_published' => ['required', 'boolean'],
             'articles.category_id' => ['required', 'exists:categories,id'],
             //'articles.attachment' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:10240']
