@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
@@ -66,4 +67,15 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    /**
+     * This method allows for the retrieval of articles that have been viewed by the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function viewedArticles(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, 'article_views');
+    }
+
 }

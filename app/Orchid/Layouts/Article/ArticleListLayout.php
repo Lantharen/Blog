@@ -39,6 +39,13 @@ class ArticleListLayout extends Table
                 ->alignCenter()
                 ->cantHide(),
 
+            TD::make('view_count', 'View Count')
+                ->alignCenter()
+                ->cantHide()
+                ->render(function (Article $article) {
+                    return $article->view_count;
+                }),
+
             TD::make('title', 'Title')
                 ->alignCenter()
                 ->cantHide(),
@@ -46,6 +53,11 @@ class ArticleListLayout extends Table
             TD::make('content', 'Content')
                 ->alignCenter()
                 ->cantHide(),
+
+            TD::make('viewers', 'Viewers')
+                ->render(function (Article $article) {
+                    return $article->viewers->pluck('name')->join(', ');
+                }),
 
             TD::make(__('Actions'))
                 ->cantHide()

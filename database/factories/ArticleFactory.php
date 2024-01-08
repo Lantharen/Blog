@@ -22,6 +22,7 @@ class ArticleFactory extends Factory
             'category_id' => function () {
                 return Category::query()->inRandomOrder()->first()->id ?? CategoryFactory::new()->create()->id;
             },
+            'view_count' => $this->faker->numberBetween(1,100),
             'title' => Str::title($this->faker->words(2, true)),
             'content' => Str::title($this->faker->words(5, true)),
             'is_published' => $this->faker->boolean,

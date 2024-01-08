@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Orchid\Attachment\Attachable;
 use Orchid\Screen\AsSource;
 
@@ -24,7 +25,8 @@ class Article extends Model
         'is_published',
         'title',
         'content',
-        'published_at'
+        'published_at',
+        'view_count',
     ];
 
     /**
@@ -46,5 +48,16 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * Relationship to Article model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function viewers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'article_views')->withTimestamps();
+    }
+
 
 }

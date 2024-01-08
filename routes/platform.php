@@ -6,6 +6,8 @@ use App\Orchid\Screens\Article\ArticleEditScreen;
 use App\Orchid\Screens\Article\ArticleListScreen;
 use App\Orchid\Screens\Category\CategoryEditScreen;
 use App\Orchid\Screens\Category\CategoryListScreen;
+use App\Orchid\Screens\Comment\CommentEditScreen;
+use App\Orchid\Screens\Comment\CommentListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -146,5 +148,26 @@ Route::screen('articles/{article}/edit', ArticleEditScreen::class)
     ->breadcrumbs(fn (Trail $trail, $article) => $trail
         ->parent('platform.system.articles')
         ->push($article->id, route('platform.system.articles.edit', $article)));
+
+// Platform > System > Comment
+Route::screen('comments', CommentListScreen::class)
+    ->name('platform.system.comments')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Comment'));
+
+// Platform > System > Comment > Create
+Route::screen('comments/create', CommentEditScreen::class)
+    ->name('platform.system.comments.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.system.comments')
+        ->push(__('Create'), route('platform.system.comments.create')));
+
+//Platform > System > Comments > Comment
+Route::screen('comments/{comment}/edit', CommentEditScreen::class)
+    ->name('platform.system.comments.edit')
+    ->breadcrumbs(fn (Trail $trail, $comment) => $trail
+        ->parent('platform.system.comments')
+        ->push(__($comment->id), route('platform.system.comments.edit', $comment)));
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');

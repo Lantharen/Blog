@@ -84,6 +84,9 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make(__('Articles'))
                 ->route('platform.system.articles'),
 
+            Menu::make(__('Comment'))
+                ->route('platform.system.comments'),
+
             Menu::make('Documentation')
                 ->title('Docs')
                 ->icon('bs.box-arrow-up-right')

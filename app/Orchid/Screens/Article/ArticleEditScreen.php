@@ -24,6 +24,10 @@ class ArticleEditScreen extends AbstractArticleScreen
      */
     public function query(Article $article): iterable
     {
+        if (auth()->check()) {
+            $article->viewers()->syncWithoutDetaching([auth()->id()]);
+        }
+
         return [
             'articles' => $article
         ];
@@ -85,7 +89,6 @@ class ArticleEditScreen extends AbstractArticleScreen
         )) {
             Toast::info('Article successfully saved.');
         }
-
 
         Toast::info('Article successfully created.');
 
