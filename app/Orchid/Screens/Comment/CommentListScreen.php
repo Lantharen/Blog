@@ -4,6 +4,8 @@ namespace App\Orchid\Screens\Comment;
 
 use App\Models\Comment;
 use App\Orchid\Elements\Buttons\CreateButton;
+use App\Orchid\Filters\CommentFilterLayout;
+use App\Orchid\Filters\RelationUserNameFilter;
 use App\Orchid\Layouts\Comment\CommentListLayout;
 
 class CommentListScreen extends AbstractCommentScreen
@@ -16,7 +18,9 @@ class CommentListScreen extends AbstractCommentScreen
     public function query(): iterable
     {
         return [
-            'comments' => Comment::with('user', 'article')->paginate()
+            'comments' => Comment::with('user', 'article')
+                ->filters()
+                ->paginate()
         ];
     }
 
@@ -50,6 +54,7 @@ class CommentListScreen extends AbstractCommentScreen
     public function layout(): iterable
     {
         return [
+            CommentFilterLayout::class,
             CommentListLayout::class,
         ];
     }
