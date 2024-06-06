@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Article;
 
 use App\Models\Article;
+use App\View\Components\Thumbnail;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -24,6 +25,12 @@ class ArticleListLayout extends Table
             TD::make('id', 'ID')
                 ->alignCenter()
                 ->cantHide(),
+
+            TD::make('thumbnail', 'Thumbnail')
+                ->component(Thumbnail::class)
+                ->alignCenter()
+                ->cantHide(),
+
 
             TD::make('category.name', 'Category')
                 ->render(function (Article $article) {

@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Comment;
 
 use App\Models\Comment;
+use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -42,11 +43,14 @@ class CommentListLayout extends Table
                     return $comment->user->name;
                 }),
 
-            TD::make('content', 'Content'),
-
-            TD::make('edited_at', 'Edited At')
+            TD::make('content', 'Content')
                 ->render(function (Comment $comment) {
-                    return $comment->created_at->toDayDateTimeString();
+                    return Str::words($comment->content, 5, '...');
+                }),
+
+            TD::make('updated_at', 'Updated At')
+                ->render(function (Comment $comment) {
+                    return $comment->updated_at->toDayDateTimeString();
                 }),
 
             TD::make(__('Actions'))

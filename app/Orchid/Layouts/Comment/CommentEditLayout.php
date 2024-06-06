@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\User;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layouts\Rows;
 
 
@@ -27,8 +28,9 @@ class CommentEditLayout extends Rows
             ->title('User')
                 ->fromModel(User::class, 'name'),
 
-            Input::make('comment.content')
-            ->title('Content')
+            TextArea::make('comment.content')
+                ->title('Content')
+                ->rows(3)
                 ->maxLength(500),
         ];
     }
