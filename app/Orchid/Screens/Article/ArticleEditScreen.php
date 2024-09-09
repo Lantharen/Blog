@@ -8,12 +8,14 @@ use App\Orchid\Elements\Buttons\DeleteButton;
 use App\Orchid\Elements\Buttons\SaveButton;
 use App\Orchid\Layouts\Article\ArticleEditLayout;
 use Illuminate\Http\RedirectResponse;
+use Orchid\Screen\Action;
+use Orchid\Screen\Layout;
 use Orchid\Support\Facades\Toast;
 
 class ArticleEditScreen extends AbstractArticleScreen
 {
     /**
-     * @var \App\Models\Article|null
+     * @var Article|null
      */
     public ?Article $article = null;
 
@@ -50,9 +52,9 @@ class ArticleEditScreen extends AbstractArticleScreen
     /**
      * The screen's action buttons.
      *
-     * @uses \App\Orchid\Screens\Article\AbstractArticleScreen::delete()
+     * @uses AbstractArticleScreen::delete
      *
-     * @return \Orchid\Screen\Action[]
+     * @return Action[]
      */
     public function commandBar(): iterable
     {
@@ -66,7 +68,7 @@ class ArticleEditScreen extends AbstractArticleScreen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
+     * @return Layout[]|string[]
      */
     public function layout(): iterable
     {
@@ -76,9 +78,9 @@ class ArticleEditScreen extends AbstractArticleScreen
     }
 
     /**
-     * @param  \App\Models\Article $article
-     * @param  \App\Http\Requests\Article\SaveArticleRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Article $article
+     * @param SaveArticleRequest $request
+     * @return RedirectResponse
      */
     public function save(Article $article, SaveArticleRequest $request) : RedirectResponse
     {
